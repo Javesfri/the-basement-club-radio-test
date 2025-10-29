@@ -31,7 +31,7 @@ export default function Home() {
 
       <audio
         ref={audioRef}
-        src="http://72.61.33.218:8000/radio.mp3"
+        src="http://72.61.33.218:8000"
         preload="none"
       />
     </div>

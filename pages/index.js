@@ -48,7 +48,7 @@ export default function Home() {
 
       <audio
         ref={audioRef}
-        src="https://thebasementradio.duckdns.org:8443/radio.mp3"
+        src="https://thebasementradio.duckdns.org/radio.mp3"
         preload="none"
       />
     </div>

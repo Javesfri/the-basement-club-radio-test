@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  background-color: #1e1f22; /* Gris oscuro tipo ChatGPT dark */
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.radio-logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 50px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Barra del reproductor */
+.player-bar {
+  background: linear-gradient(180deg, #2b2c30, #1c1d20);
+  width: 100%;
+  max-width: 600px;
+  height: 80px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón de Play/Pause */
+.player-button {
+  background: none;
+  color: #fff;
+  font-size: 2.2rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.player-button:hover {
+  transform: scale(1.1);
+  color: #f3c96b; /* toque dorado retro */
+}
+
+/* Texto dentro del reproductor */
+.player-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.now-playing {
+  color: #f3c96b;
+  font-weight: 600;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.station-name {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: #ccc;
+  letter-spacing: 0.5px;
+}
+
+/* Responsivo */
+@media (max-width: 500px) {
+  .radio-logo {
+    width: 150px;
+    margin-bottom: 30px;
+  }
+
+  .player-bar {
+    height: 70px;
+    padding: 0 15px;
+  }
+
+  .player-button {
+    font-size: 1.8rem;
+  }
+
+  .now-playing {
+    font-size: 0.9rem;
+  }
+
+  .station-name {
+    font-size: 0.8rem;
+  }
+}

@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 export default function Home() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.8);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -10,6 +11,12 @@ export default function Home() {
     if (isPlaying) audio.pause();
     else audio.play();
     setIsPlaying(!isPlaying);
+  };
+
+  const handleVolumeChange = (e) => {
+    const vol = parseFloat(e.target.value);
+    setVolume(vol);
+    if (audioRef.current) audioRef.current.volume = vol;
   };
 
   return (
@@ -21,6 +28,16 @@ export default function Home() {
           {isPlaying ? "❚❚" : "►"}
         </button>
 
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={volume}
+          onChange={handleVolumeChange}
+          className="volume-slider"
+        />
+
         <div className="player-info">
           <p className="now-playing">
             {isPlaying ? "Reproduciendo..." : "Pausado"}
@@ -31,7 +48,7 @@ export default function Home() {
 
       <audio
         ref={audioRef}
-        src="http://72.61.33.218:8000/radio.mp3"
+        src="https://thebasementradio.duckdns.org:8443/radio.mp3"
         preload="none"
       />
     </div>

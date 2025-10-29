@@ -95,3 +95,8 @@ body {
     font-size: 0.8rem;
   }
 }
+.volume-slider {
+  width: 100px;
+  accent-color: #e0e0e0;
+  margin-left: 10px;
+}

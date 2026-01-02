@@ -1,0 +1,483 @@
+@keyframes mechanical-shake {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-2px);
+  }
+  40% {
+    transform: translateY(1px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
+  80% {
+    transform: translateY(1px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.player-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  bottom: -200px;
+  width: 100%;
+  height: 150px;
+  border-top: 3px solid #ede8d0;
+  border-bottom: 0px;
+  transition: bottom 1s steps(20); /* abrir */
+
+  z-index: 999;
+
+  background-image: url("../public/texture-player-2.png");
+
+  /* CLAVE 1: Repetir la imagen tanto horizontal como verticalmente */
+  background-repeat: repeat;
+
+  /* CLAVE 2: Definir un tamaño fijo para el grano */
+  /* NO uses 'cover'. Usa un valor en px. Juega con este valor 
+     para hacer el grano más fino (ej: 200px) o más grueso (ej: 500px) */
+  background-size: 550px auto;
+}
+
+.player-container.open {
+  bottom: 0;
+  transition: bottom 1s steps(20), animation 1s ease-out;
+  animation: mechanical-shake 1s ease-out;
+}
+.logo-player-container {
+  width: 20%;
+  
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.logo-player {
+  margin: 13px;
+  height: 50px;
+  box-shadow: none;
+  filter: 
+    /* 1. Sombra negra suave abajo-derecha (da volumen hacia el fondo) */ drop-shadow(
+      2px 2px 1px rgba(0, 0, 0, 0.8)
+    )
+    /* 2. Brillo sutil blanco arriba-izquierda (simula el borde metálico iluminado) */
+    drop-shadow(-1px -1px 0px rgba(255, 255, 255, 0.2));
+}
+
+.vintage-player {
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  gap: 20px;
+  
+}
+
+/* Display digital */
+.player-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+
+  border-radius: 6px;
+  width: 50%;
+  text-align: center;
+
+  /* Fondo Negro Profundo */
+  background: #010105;
+
+  /* AÑADIMOS PROFUNDIDAD Y REFLEJO DE CRISTAL */
+  box-shadow: 
+    /* 1. Profundidad (La sombra oscura y larga que lo empuja hacia atrás) */ inset
+      0 0 10px #000000,
+    /* Sombra oscura fuerte cerca del borde */ inset 0 0 20px rgba(0, 0, 0, 0.9),
+    /* Sombra larga para la inmersión */
+      /* 2. Borde Interior de Cristal (Reflejo metálico/de vidrio) */ inset 0 0
+      1px 1px #444455; /* Borde interior sutil y sólido (gris azulado) */
+
+  opacity: 0.95;
+}
+
+.display-text-main {
+  height: 80%;
+  width: 100%;
+  font-family: "DS-Digital";
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  user-select: none;
+}
+.display-text-main p {
+  color: #00ffc4; /* Un cian brillante, más fiel al VFD/FL de Sony */
+  text-shadow: 0 0 4px #00ffc4, 0 0 5px rgba(0, 255, 196, 0.5); /* Agrega GLOW */
+  font-family: "DS-Digital";
+  font-size: 30px;
+  display: flex;
+  user-select: none;
+}
+.display-text-main span {
+  display: flex;
+  /* CAMBIO 4: Color Secundario (Indicadores/Tune) - Rojo/Ámbar */
+  color: #ff3300; /* Rojo/Naranja brillante */
+  text-shadow: 0 0 5px #ff3300; /* Agrega GLOW */
+  font-family: "DS-Digital";
+  font-size: 30px;
+  user-select: none;
+}
+
+/* ---------- MARQUEE ---------- */
+.marquee {
+  width: 100%;
+  overflow: hidden; /* oculta lo que se va */
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.marquee-inner {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 25s steps(50) infinite;
+
+  /* CAMBIO 1: Color a Naranja/Ámbar (indicador secundario) */
+  color: #ff6600;
+
+  font-family: "DS-Digital";
+  font-size: 18px;
+  letter-spacing: 1px;
+
+  /* CAMBIO 2: Opacidad total y un ligero GLOW para que brille */
+  opacity: 1;
+  text-shadow: 0 0 4px #ff6600;
+  user-select: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Controles */
+
+.play-pause-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 90px;
+  border: 2px solid #333;
+  background: #222;
+  color: #eaeaea;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.play-pause-btn:hover {
+  background: #333;
+}
+
+/* Perilla */
+
+.knob-wrapper {
+  width: 85px;
+  height: 85px;
+  cursor: grab;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+  position: relative;
+
+  /* CRÍTICO: Aplicamos la forma y la sombra de hundimiento aquí */
+  border-radius: 50%;
+
+  /* Sombra para simular el agujero oscuro y profundo */
+  box-shadow: 
+/* 1. Sombra interior muy fuerte para la profundidad */ inset 0 0
+      15px rgba(0, 0, 0, 1),
+    /* 2. Sombra de bisel suave para el borde exterior del agujero */ inset 0 0
+      5px rgba(0, 0, 0, 0.5),
+    /* 3. Reflejo de luz en el borde del agujero (para separarlo del panel) */ 0
+      0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ------------------------------------------------ */
+/* La imagen ahora se ENCOGE dentro del contenedor con sombra */
+/* ------------------------------------------------ */
+.knob-wrapper {
+  /* ... (propiedades de tamaño, cursor, display, etc. sin cambios) ... */
+  width: 88px;
+  height: 88px;
+  cursor: grab;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+  position: relative;
+
+  /* CLAVE 1: Aplicamos la forma y la sombra de hundimiento */
+  border-radius: 50%;
+
+  /* ** AÑADIDO: Darle un fondo oscuro para que la sombra se proyecte ** */
+  background-color: #111; /* Color negro muy oscuro, visible */
+
+  /* Sombra para simular el agujero oscuro y profundo */
+  box-shadow: 
+    /* 1. Sombra interior muy fuerte para la profundidad */ inset
+      0 0 15px rgba(0, 0, 0, 1),
+    /* 2. Sombra de bisel suave para el borde exterior del agujero */ inset 0 0
+      5px rgba(0, 0, 0, 0.5),
+    /* 3. Reflejo de luz en el borde del agujero (outset) */ 0 0 1px 1px
+      rgba(255, 255, 255, 0.05);
+}
+
+/* ------------------------------------------------ */
+/* AJUSTE FINAL a la Imagen: ESCALA y MARGEN */
+/* ------------------------------------------------ */
+.knob-image {
+  /* ... (propiedades de tamaño, pointer-events, etc.) ... */
+
+  width: 85%;
+  height: 85%;
+  user-select: none;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+
+  /* Encogemos la imagen para exponer el fondo con sombra */
+
+  position: relative;
+  z-index: 2; /* Sube la perilla por si acaso */
+
+  /* CRÍTICO: Elimina la propiedad 'margin: 5px' que tenías al final, 
+     ya que interfiere con el centrado del 'transform: scale()'. */
+  /* margin: 5px; <- ELIMINADO/IGNORADO */
+}
+.knob-title {
+  color: #ede8d0;
+  font-weight: 400;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1),
+    /* Sombra clara arriba/derecha (simula relieve) */ 0 -1px 0 rgba(0, 0, 0, 0.7); /* Sombra oscura abajo/izquierda (simula 
+        hundimiento) */
+  font-size: 13px; /* Pequeño y legible */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* Color Base */
+  color: #c4822d; /* Gris medio para simular texto grabado */
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+}
+.knob-display-volumen {
+  /* El color ya está duplicado; lo eliminamos para simplificar */
+  /* color: #39ff14; */
+  /* background-color: #000; */
+  font-size: 20px;
+
+  /* CAMBIO 1: Fondo negro/azul oscuro, consistente con el display principal */
+  background: #010105;
+
+  /* CAMBIO 2: Color principal Cian brillante */
+  color: #00ffc4;
+  text-shadow: 0 0 5px #00ffc4; /* Añadimos el brillo */
+
+  width: 30px;
+  padding: 1px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+ /* marco hundido */ inset 0 0 4px #000000cc,
+    /* sombra interna oscura (ya no es verde) */ inset 0 0 10px
+      rgba(0, 0, 0, 0.8),
+    inset 0 0 25px rgba(0, 0, 0, 0.8),
+    /* brillo externo suave (AHORA CIAN) */ 0 0 0px #00ffc4aa, 0 0 1px #00ffc466;
+}
+.knob-display-volumen span {
+  font-family: "DS-Digital";
+}
+.knob-wrapper:active {
+  cursor: grabbing;
+}
+
+.knob-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: 50% 50%;
+  pointer-events: none; /* evita que la imagen capture eventos y cause glitches */
+  user-select: none;
+  margin: 5px;
+}
+
+/* ------------------------------------------------------------------ */
+/* BOTÓN DE CONTROL ANALÓGICO (RESTAURAR EQ) */
+/* Simula un pulsador negro mate con texto retroiluminado sutil */
+/* ------------------------------------------------------------------ */
+.button-reset {
+  /* Dimensiones y Posición */
+  /* Padding vertical más grande, horizontal más pequeño */
+  height: 30px; /* Altura para acomodar el texto vertical */
+  width: 90px;
+
+  /* Texto */
+  font-size: 13px; /* Pequeño y legible */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* Color Base */
+  color: #a0a0a0; /* Gris medio para simular texto grabado */
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+
+  /* FONDO: Simulación de Metal Oscuro Grisáceo (Antracita) */
+  background: linear-gradient(
+    to bottom,
+    #333333 0%,
+    /* Borde superior claro para simular el inicio del relieve */ #1a1a1a 5%,
+    /* Negro grisáceo profundo */ #151515 95%,
+    /* Centro muy oscuro */ #1a1a1a 100% /* Borde inferior sutil */
+  );
+
+  /* PROFUNDIDAD DEL TEXTO (Rotación y Grabado) */
+  display: flex; /* Necesario para centrar el texto después de rotar */
+  justify-content: center;
+  align-items: center;
+  /* ROTACIÓN: Gira el contenido 90 grados a la izquierda para texto vertical */
+  transform: rotate(-90deg);
+
+  /* Sombra de texto para simular GRAVADO (Profundidad) */
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1),
+    /* Sombra clara arriba/derecha (simula relieve) */ 0 -1px 0 rgba(0, 0, 0, 0.7); /* Sombra oscura abajo/izquierda (simula hundimiento) */
+
+  /* Sombra del Botón (Simula la pieza saliendo del panel) */
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.5) inset, 0 3px 5px rgba(0, 0, 0, 0.7); /* Sombra externa */
+
+  transition: all 0.08s ease-out;
+}
+
+/* Estado de Hover (Muy sutil para mantener la sobriedad) */
+.button-reset:hover {
+  color: #e0e0e0; /* Texto más visible */
+  /* Mantenemos el gradiente casi igual, solo un ligero resalte */
+  background: linear-gradient(
+    to bottom,
+    #383838 0%,
+    #1d1d1d 5%,
+    #181818 95%,
+    #1d1d1d 100%
+  );
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.9); /* Sombra exterior un poco más fuerte */
+}
+
+/* Estado de Presionado (:active) - Movimiento mecánico de hundimiento */
+.button-reset:active {
+  /* 1. MOVIMIENTO: Se hunde ligeramente */
+  transform: rotate(-90deg) translateY(1px); /* Mover hacia abajo en la dirección original del texto */
+
+  /* 2. Sombra de Texto Inversa (Simula que el grabado se oscurece al hundirse) */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.8), 0 1px 1px rgba(255, 255, 255, 0.05);
+
+  /* 3. FONDO: Simula el botón completamente hundido */
+  background: linear-gradient(to bottom, #101010 0%, #05050528 5%);
+
+  /* 4. SOMBRA: Se invierte para un look de hundimiento total */
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset,
+    /* Sombra interna dominante */ 0 1px 1px rgba(0, 0, 0, 0.5);
+
+  color: #b0b0b0; /* El texto queda un poco más oscuro */
+}
+.eq-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  
+}
+
+@media (max-width: 1080px) {
+  .logo-player-container {
+    
+    margin: 0;
+    padding: 0;
+    
+
+  }
+  .logo-player {
+ 
+    transform: rotate(270deg) scale(1);
+    margin: 0;
+    padding: 0;
+    margin-top:50px ;
+    height: 38px;
+    margin-right: 50px
+    
+    
+  }
+  .eq-section {
+    display: none;
+    visibility: hidden;
+  }
+
+  .vintage-player {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    padding-right: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-player-container {
+    
+    display: none;
+    
+
+  }
+  .vintage-player {
+    
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+   
+    padding-right: 0;
+    
+  }
+  
+  
+}

@@ -1,0 +1,93 @@
+.button-play-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 85px;
+  height: 85px;
+  margin-bottom: 30px;
+  right: 10%;
+ 
+}
+
+.button-play {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.button-play-image {
+  height: 90px;
+  width: auto;
+  transition: filter 0.2s;
+}
+
+/* Posicionamiento específico de ON/OFF */
+.button-play-letters-container-off,
+.button-play-letters-container-on {
+  position: absolute;
+  left: 33%;
+  transform: translateX(-50%);
+  font-size: 23px;
+  font-weight: 550;
+  color: #d4b30ac9;
+  pointer-events: none; /* No interfieren con el click */
+}
+
+.button-play-letters-container-off {
+  top: -12px; /* Ajusta según la imagen de tu botón */
+}
+
+.button-play-letters-container-on {
+  bottom: -20px; /* Ajusta según la imagen de tu botón */
+}
+
+.button-play.on .button-play-image {
+  animation: contact-flicker 0.18s steps(1);
+}
+
+@keyframes contact-flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@media (max-width: 1080px) {
+  .button-play-container {
+    
+  width: 65px;
+  height: 80px;
+  margin-bottom: 0;
+  right: 0%;
+
+  
+ 
+}
+  .button-play-image {
+    margin-top:3px;
+  height: 70px;
+  
+}
+
+.button-play-letters-container-off,
+.button-play-letters-container-on {
+  position: absolute;
+  left: 32%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-weight: 550;
+  color: #d4b30ac9;
+  pointer-events: none; /* No interfieren con el click */
+}
+
+.button-play-letters-container-off {
+  top: -7px; /* Ajusta según la imagen de tu botón */
+}
+
+.button-play-letters-container-on {
+  bottom: -4px; /* Ajusta según la imagen de tu botón */
+}
+
+}

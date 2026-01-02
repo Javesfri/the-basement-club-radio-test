@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@font-face {
+  font-family: "DS-Digital";
+  src: url("/fonts/DS-DIGII.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Playfair Display';
+  font-family: "Rajdhani", sans-serif
+  
+  
+
+}
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color:#131313; /* Color grisáceo de fondo */
+
+  padding-top: 0px;
+  
+  padding-bottom: 80px;
+  /*background-image: url('../public/texture6-main.png');
+  /* 2. Haz que cubra todo el espacio */
+  background-size: cover;
+
+  /* 3. Centra la imagen para que se vea la parte principal */
+  background-position: center;
+
+  /* 4. Evita que se repita como mosaico si la pantalla es gigante */
+  background-repeat: repeat;
+  
+}
+.Main{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 0px;
+}
+.store-disabled{
+  overflow:hidden ;
+  background-color: #181818;
+
+}
+.store-disabled-gif{
+  width: 100%;
+  height: auto;
+  min-height: 30px;
+}
+
+@media (max-width: 768px) {
+  .store-disabled-gif{
+    width: 200%;
+  }
+}
+
+
+
+
+
+
+

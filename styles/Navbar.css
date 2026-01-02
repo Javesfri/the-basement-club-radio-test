@@ -1,0 +1,148 @@
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 150px;
+  background: #181818 url("/texture11.png") no-repeat center/cover;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 3px solid #ede8d0;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  z-index: 1000;
+  padding: 0 20px;
+}
+
+/* Contenedores laterales simétricos */
+.nav-side {
+  flex: 1; /* Esto hace que ambos lados midan lo mismo, centrando el logo */
+  display: flex;
+  align-items: center;
+  height: 140px;
+  padding-top: 40px;
+}
+
+.left-side {
+  justify-content: flex-end;
+  padding-right: 40px; /* Espacio entre links e imagen del logo */
+}
+
+/* LADO DERECHO: Links a la izquierda, Botón al borde derecho */
+.right-side {
+  justify-content: space-between; /* Links a un lado, botón al otro */
+  padding-left: 40px; /* Espacio entre logo y links */
+}
+
+.nav-group {
+  display: flex;
+  gap: 30px;
+  font-size: 20px;
+}
+
+.nav-logo img {
+  height: 140px;
+  width: auto;
+  padding: 0px;
+}
+
+/* Hamburguesa (Oculta en desktop) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-line {
+  width: 30px;
+  height: 3px;
+  background-color: #ede8d0;
+  border-radius: 2px;
+}
+
+/* Links Estilos */
+.nav a {
+  color: #ede8d0;
+  text-decoration: none;
+  text-shadow: 2px 0px 0px rgba(190, 0, 0, 0.6);
+  font-weight: 600;
+}
+
+/* Menu Mobile */
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #181818;
+  flex-direction: column;
+  padding: 20px;
+  border: 2px solid #ede8d0;
+  animation: slideDown 0.3s ease;
+}
+
+.nav-mobile.show {
+  display: flex;
+}
+@media (max-width: 1310) {
+  .nav {
+    width: 100%;
+   border-left: none;
+   border-right: none;
+    padding: 0 15px;
+  }
+  
+  
+  
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1080px) {
+  .nav {
+    width: 100%;
+    height: 100px;
+    padding: 0 15px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-logo img {
+    height: 80px;
+  }
+
+  /* Mantenemos el flex: 1 para que el logo no se mueva a los lados */
+  .nav-side {
+    flex: 1;
+    padding-top: 20px;
+    
+    height: 80px;
+  }
+  .left-side {
+    justify-content: flex-start;
+  }
+  .right-side {
+    justify-content: flex-end;
+  }
+}

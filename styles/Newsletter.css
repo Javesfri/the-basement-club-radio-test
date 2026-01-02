@@ -1,0 +1,31 @@
+.form-input{
+    background-color: #181818 !important;
+    border: none;
+    color: #D9D9D9;
+    font-style: italic;
+    margin-right: 10px;
+    
+}
+.form-input:focus{
+    outline:none ;
+    border-bottom: 1px solid #D9D9D9;
+    background-color: #181818 !important;
+
+    
+}
+
+
+
+.form-button{
+    width: 35px;
+    color: #D9D9D9;
+    background-color: #181818;
+    border: 1px solid #D9D9D9;
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+    
+}
+.form-button:active, .form-button:focus{
+    transform: translateY(2px);
+    box-shadow: none;
+}

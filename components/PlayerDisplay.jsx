@@ -13,7 +13,7 @@ export default function PlayerDisplay() {
 
       <div className="marquee">
         <div className="marquee-inner">
-          BASEMENT CLUB RADIO - Programa Especial Retro Synthwave - 24HS - VAMO LAS PUTA HARRY
+          BASEMENT CLUB RADIO - Programa Especial Retro Synthwave - 24HS
         </div>
       </div>
     </div>
